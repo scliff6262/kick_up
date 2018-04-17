@@ -1,14 +1,16 @@
 <%=form_for @user do |f|%>
 <%=f.label :first_name%><br>
 <%=f.text_field :first_name%><br></br>
+
 <%=f.label :last_name%><br>
 <%=f.text_field :last_name%><br></br>
+
 <%=f.label :zip_code%><br>
 <%=f.text_field :zip_code%><br></br>
-<%=f.label :email%><br>
-<%=f.text_field :email%><br></br>
+
 <%=f.label :phone%><br>
 <%=f.text_field :phone%><br></br>
+
 <%=f.label "Playing Level"%><br>
 <%=f.radio_button :level, 1 %>
 <%=f.label("Beginner") %><br>
@@ -17,7 +19,16 @@
 <%=f.radio_button :level, 3 %>
 <%=f.label("Veteran") %><br>
 <%=f.radio_button :level, 4 %>
-<%=f.label("Highly Competitive")%>
-<br></br>
+<%=f.label("Highly Competitive")%><br></br>
+
+<%=f.label :email%><br>
+<%=f.text_field :email%><br></br>
+
+<%=f.label :password%><br>
+<%=f.password_field :password%><br></br>
+<%=f.label :password_confirmation%><br>
+<%=f.password_field :password_confirmation%><br></br>
+
+
 <%=f.submit%>
 <%end%>
