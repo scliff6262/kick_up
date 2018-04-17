@@ -3,6 +3,22 @@
 <%=f.label :title%><br>
 <%=f.text_field :title%><br></br>
 
+<%=f.label "Date & Time"%><br>
+<%=f.text_field :date, value: "mm/dd/yyyy"%>
+<%= f.time_select :time,
+  :combined => true,
+  :default => Time.now.change(:hour => 11, :min => 30),
+  :minute_interval => 15,
+  :time_separator => "",
+  :start_hour => 6,
+  :start_minute => 00,
+  :end_hour => 23,
+  :end_minute => 45
+%><br></br>
+
+<%=f.label :address%><br>
+<%=f.text_field :address%><br></br>
+
 <%=f.label :zip_code%><br>
 <%=f.text_field :zip_code%><br></br>
 
