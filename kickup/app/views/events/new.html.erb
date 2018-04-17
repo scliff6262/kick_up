@@ -1,0 +1,28 @@
+<h1>Create an Event</h1>
+<%=form_for(@event, url: user_events_path) do |f|%>
+<%=f.label :title%><br>
+<%=f.text_field :title%><br></br>
+
+<%=f.label :zip_code%><br>
+<%=f.text_field :zip_code%><br></br>
+
+<%=f.label :skill_level%> <br>
+<%=f.radio_button :skill_level, 1%>
+<%=f.label "Beginner"%><br>
+<%=f.radio_button :skill_level, 2%>
+<%=f.label "Decent Player"%><br>
+<%=f.radio_button :skill_level, 3%>
+<%=f.label "Veteran"%><br>
+<%=f.radio_button :skill_level, 4%>
+<%=f.label "Highly Competitive"%><br></br>
+
+<%=f.label :event_type%> <br>
+<%=f.radio_button :event_type, "Pickup"%>
+<%=f.label "Pick-up Game"%><br>
+<%=f.radio_button :event_type, "Shoot-Around"%>
+<%=f.label "Kick around"%><br>
+<%=f.radio_button :event_type, "Ultra"%>
+<%=f.label "Ultra"%><br>
+
+<%=f.submit%>
+<%end%>
