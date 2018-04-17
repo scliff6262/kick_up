@@ -1,5 +1,5 @@
 <h1><%=@user.first_name%>'s Page</h1>
-
+<%=link_to "Logout", logout_path, method: :post%>
 <h4>Email:</h4>
 <p><%=@user.email%></p>
 
