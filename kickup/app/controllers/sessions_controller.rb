@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new #login page
-    raise session.inspect
   end
 
   def create #creating a session
