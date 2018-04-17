@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       render 'sessions/new'
-    end 
+    end
   end
 
   def destroy #logout
