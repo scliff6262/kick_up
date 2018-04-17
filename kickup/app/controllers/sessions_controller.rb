@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new #login page
+    raise session.inspect
   end
 
   def create #creating a session
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy #logout
-    session[:id].delete if current_user
+    session.clear if current_user
     redirect_to login_path
   end
 
