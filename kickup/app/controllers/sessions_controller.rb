@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new #login page
+    redirect_to user_path(current_user) if current_user
   end
 
   def create #creating a session
