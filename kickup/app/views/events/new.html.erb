@@ -5,9 +5,9 @@
 
 <%=f.label "Date & Time"%><br>
 <%=f.text_field :date, value: "mm/dd/yyyy"%>
-<%= f.time_select :time,
+<!--
+<%= f.time_select :event_time,
   :combined => true,
-  :default => Time.now.change(:hour => 11, :min => 30),
   :minute_interval => 15,
   :time_separator => "",
   :start_hour => 6,
@@ -15,7 +15,9 @@
   :end_hour => 23,
   :end_minute => 45
 %><br></br>
+-->
 
+<%=f.time_select :event_time %><br></br>
 <%=f.label :address%><br>
 <%=f.text_field :address%><br></br>
 
