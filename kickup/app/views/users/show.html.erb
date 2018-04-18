@@ -14,5 +14,5 @@
 
 <h4>Organized Events Below</h4>
 <%@user.organized_events.each do |event|%>
-<p><%=link_to event.title, user_event_path(@user.id, event)%></p>
+<p><%=link_to event.title, event_path(event)%></p>
 <%end%>
