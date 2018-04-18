@@ -1,7 +1,22 @@
 <h1><%=@event.title%></h1>
 
+<h4>Time:</h4>
+<p><%=@event.time%></p>
+
+<h4>Date:</h4>
+<p><%=@event.date %></p>
+
 <h4>Type:</h4>
 <p><%=@event.event_type%></p>
 
 <h4>Location(will change using ZipCode Gem):</h4>
-<p><%=@event.zip_code%></p>
+<p><%=@event.zip_code %></p>
+
+<h4>Address:</h4>
+<p><%=@event.address%></p>
+
+<h4>Skill Level:</h4>
+<p><%=@event.skill_level %></p>
+
+<h4>Organized by:</h4>
+<p><%=link_to @event.organizer.first_name, user_path(@event.organizer)%></p>
