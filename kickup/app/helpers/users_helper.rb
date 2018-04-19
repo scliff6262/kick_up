@@ -1,5 +1,13 @@
 module UsersHelper
 
+  def homepage_or_profile
+    if session[:user_id] == @user.id
+      render 'users/current_user'
+    else
+      render 'users/not_current_user'
+    end
+  end
+
   def user_skill_level(skill_level)
     case skill_level
     when 1
