@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+skip_before_action :require_login, only: [:new, :create]
   def new #login page
     redirect_to user_path(current_user) if current_user
   end
