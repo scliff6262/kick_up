@@ -34,6 +34,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    if current_user.organized_events.include?(@event)
+      @event.destroy
+      redirect_to user_path(current_user)
+    else
+      #error message "this isnt your event!!"
+      redirect_to event_path(@event)
+    end
+  end
+
   private
 
   def event_params

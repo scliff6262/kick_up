@@ -3,7 +3,7 @@
 <%=f.text_field :title%><br></br>
 
 <%=f.label "Date & Time"%><br>
-<%=f.text_field :date, value: "#{@event.date ? @event.date : mm/dd/yyyy}"%>
+<%=f.text_field :date, value: "#{@event.date ? @event.date : "mm/dd/yyyy"}"%>
 
 <%=f.time_select :event_time, {minute_step: 15} unless @event.event_time %><br></br>
 <%=f.label :address%><br>
@@ -28,7 +28,9 @@
 <%=f.radio_button :event_type, "Shoot-Around"%>
 <%=f.label "Kick around"%><br>
 <%=f.radio_button :event_type, "Ultra"%>
-<%=f.label "Ultra"%><br>
+<%=f.label "Ultra"%>
+
+<br></br>
 
 <%=f.submit%>
 <%end%>
