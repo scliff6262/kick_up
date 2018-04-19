@@ -18,5 +18,8 @@
 <h4>Skill Level:</h4>
 <p><%=skill_level_string(@event.skill_level) %></p>
 
+<h4>Current Attendees:</h4>
+<p><%=@event.users.count%></p>
+
 <h4>Organized by:</h4>
 <p><%=link_to @event.organizer.first_name, user_path(@event.organizer)%></p>
