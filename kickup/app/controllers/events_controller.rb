@@ -19,6 +19,21 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    # MUST FIX TIME - EDIT ISSUE
+    @event.assign_attributes(event_params)
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render "events/edit"
+    end
+  end
+
   private
 
   def event_params
