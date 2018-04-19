@@ -1,0 +1,7 @@
+<h1>RSVP</h1>
+
+<h3>Add comments:</h3>
+<%=form_tag event_rsvps_path(@event)%>
+<%=text_area_tag 'comment'%><br></br>
+<%=submit_tag 'Attend'%><br>
+<%=link_to 'Go Back', event_path(@event)%>
