@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :users do
-    resources :rsvps 
+    resources :rsvps, only: [:index, :show]
   end
-  resources :events
+
+  resources :events do
+    resources :rsvps, except: [:index, :show]
+  end
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
