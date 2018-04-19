@@ -19,4 +19,20 @@ module EventsHelper
     end
   end
 
+  def attend_link
+    unless @event.users.include?(current_user)
+      link_to "Attend this Kickup", new_event_rsvp_path(@event)
+    else
+      link_to "Cancel RSVP", event_rsvp_delete_path(@event, find_rsvp_id(@event))
+    end
+  end
+
+  def find_rsvp_id(event)
+    Rsvp.where(event_id: event.id).where(user_id: current_user.id).ids
+  end
+
+  def current_user
+    User.find(session[:user_id])
+  end
+
 end

@@ -25,7 +25,14 @@ class RsvpsController < ApplicationController
   def update
   end
 
+  def delete
+    @rsvp = Rsvp.find(params[:id])
+  end
+
   def destroy
+    @rsvp = Rsvp.find(params[:id])
+    @rsvp.destroy
+    redirect_to event_path(params[:event_id])
   end
 
   private

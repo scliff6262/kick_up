@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :rsvps, except: [:index, :show]
+    get 'rsvp/:id/delete' => 'rsvps#delete', as: 'rsvp_delete'
   end
 
   get '/login' => 'sessions#new'
