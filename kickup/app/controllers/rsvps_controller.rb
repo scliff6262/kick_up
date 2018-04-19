@@ -1,9 +1,11 @@
 class RsvpsController < ApplicationController
 
   def new
+    @event = params[:event_id]
   end
 
   def create
+    raise params.inspect
   end
 
   def edit
@@ -13,5 +15,5 @@ class RsvpsController < ApplicationController
   end
 
   def destroy
-  end 
+  end
 end
