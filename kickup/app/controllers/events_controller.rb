@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.event_time = "#{params[:event]["event_time(4i)"]}:#{params[:event]["event_time(5i)"]}"
     @event.organizer_id = current_user.id
+    @event.users << current_user
     if @event.save
       redirect_to event_path(@event)
     else
