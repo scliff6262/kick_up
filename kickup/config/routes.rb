@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    resources :rsvps 
+  end
   resources :events
 
   get '/login' => 'sessions#new'
