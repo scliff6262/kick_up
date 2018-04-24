@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'static#welcome'
 
   resources :users do
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    resources :comments, only: [:create, :destroy]
     resources :rsvps, except: [:show]
     get 'rsvp/:id/delete' => 'rsvps#delete', as: 'rsvp_delete'
   end
