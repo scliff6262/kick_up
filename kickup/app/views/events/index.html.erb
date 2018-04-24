@@ -1,3 +1,11 @@
-<%sort_events_by_date.each do |event|%>
-<p><%=link_to event.title, event_path(event)%> - <%=event.date%></p>
+<h1>Kickups</h1>
+
+<h3>Coming Up:</h3>
+<%Event.sorted_upcoming_events.each do |event|%>
+<p><%=link_to event.title, event_path(event)%> - <%=location_from_zip(event.zip_code)%> - <%=friendly_date(event.date)%> </p>
+<%end%>
+
+<h3>Closest to you:</h3>
+<%Event.sort_by_closest_to_user(current_user) do |event|%>
+<p><%=link_to event.title, event_path(path)%> - <%=location_from_zip(event.zip_code)%> - <%=friendly_date(event.date)%></p>
 <%end%>
