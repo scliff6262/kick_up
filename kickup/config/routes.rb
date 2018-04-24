@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :rsvps, except: [:index, :show]
+    resources :rsvps, except: [:show]
     get 'rsvp/:id/delete' => 'rsvps#delete', as: 'rsvp_delete'
   end
 
