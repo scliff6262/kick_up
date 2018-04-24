@@ -27,6 +27,12 @@ module EventsHelper
     end
   end
 
+  def organizer_edit
+    if @event.organizer_id == current_user.id
+      link_to "Edit this Event", edit_event_path(@event)
+    end 
+  end
+
   def find_rsvp_id(event)
     Rsvp.where(event_id: event.id).where(user_id: current_user.id).ids
   end
