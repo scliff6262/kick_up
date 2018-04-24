@@ -18,4 +18,12 @@ class User < ActiveRecord::Base
   def organized_events
     Event.where(organizer_id: self.id)
   end
+
+  def is_organizer?(event)
+    event.organizer_id == self.id
+  end
+
+  def this_reservation(event)
+    Rsvp.where(user_id: self.id).where(event_id: event.id)[0]
+  end
 end

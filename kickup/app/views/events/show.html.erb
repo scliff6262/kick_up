@@ -3,29 +3,43 @@
 <p><%=attend_link%></p>
 <p><%=organizer_edit%></p>
 
-<h4>Time:</h4>
-<p><%=@event.event_time%></p>
+<div class="event-details">
+  <h4>Time:</h4>
+  <p><%=@event.event_time%></p>
 
-<h4>Date:</h4>
-<p><%=friendly_date(@event.date)%></p>
+  <h4>Date:</h4>
+  <p><%=friendly_date(@event.date)%></p>
 
-<h4>Type:</h4>
-<p><%=@event.event_type%></p>
+  <h4>Type:</h4>
+  <p><%=@event.event_type%></p>
 
-<h4>Location:</h4>
-<p><%=location_from_zip(@event.zip_code) %></p>
+  <h4>Location:</h4>
+  <p><%=location_from_zip(@event.zip_code) %></p>
 
-<h4>Distance from you</h4>
-<p><%=show_distance_from_user%></p>
+  <h4>Distance from you: (edited out due to API restriction)</h4>
+  <p></p>
 
-<h4>Address:</h4>
-<p><%=@event.address%></p>
+  <h4>Address:</h4>
+  <p><%=@event.address%></p>
 
-<h4>Skill Level:</h4>
-<p><%=skill_level_string(@event.skill_level) %></p>
+  <h4>Skill Level:</h4>
+  <p><%=skill_level_string(@event.skill_level) %></p>
 
-<h4>Current Attendees:</h4>
-<p><%=@event.users.count%></p>
+  <h4>Current Attendees:</h4>
+  <p><%=@event.users.count%></p>
 
-<h4>Organized by:</h4>
-<p><%=link_to @event.organizer.first_name, user_path(@event.organizer)%></p>
+  <h4>Organized by:</h4>
+  <p><%=link_to @event.organizer.first_name, user_path(@event.organizer)%></p>
+</div>
+
+<div class="attendees">
+  <%if current_user.is_organizer?(@event)%>
+    <h4>Attendees:</h4>
+    <ul>
+      <%@event.users.each do |user|%>
+      <li><%=link_to user.first_name, user_path(user)%> - <%=user.this_reservation(@event).comment%></li>
+      <%end%>
+    </ul>
+
+  <%end%>
+</div>
