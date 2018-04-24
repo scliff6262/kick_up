@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 skip_before_action :require_login, only: [:new, :create]
   def new #login page
     redirect_to user_path(current_user) if current_user
+    render layout: false
   end
 
   def create #creating a session
@@ -11,13 +12,14 @@ skip_before_action :require_login, only: [:new, :create]
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      render 'sessions/new'
+
+      render 'sessions/new', layout: false
     end
   end
 
   def destroy #logout
     session.clear if current_user
-    redirect_to login_path
+    redirect_to root_path
   end
 
   private
