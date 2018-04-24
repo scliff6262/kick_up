@@ -22,4 +22,14 @@ class Event < ActiveRecord::Base
   def organizer
     User.find(self.organizer_id)
   end
+
+  def distance_from_user(user)
+    resp = RestClient::Request.execute(
+      method: :get,
+      url: "https://www.zipcodeapi.com/rest/E76SZFyWQKK0FOcfvWvrsw4SFaC8x4BxvFCh8diaUe9YpktbJeo8nevbBlVpyBYu/distance.json/#{self.zip_code}/#{user.zip_code}/mile",
+      headers: {api_key: "E76SZFyWQKK0FOcfvWvrsw4SFaC8x4BxvFCh8diaUe9YpktbJeo8nevbBlVpyBYu"}
+      )
+
+      JSON.parse(resp)["distance"]
+  end
 end

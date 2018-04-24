@@ -1,5 +1,9 @@
 module UsersHelper
 
+  def nearby_events(user)
+    ##
+  end
+
   def homepage_or_profile
     if session[:user_id] == @user.id
       render 'users/current_user'
