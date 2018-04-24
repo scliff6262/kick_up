@@ -33,13 +33,6 @@ class Event < ActiveRecord::Base
       JSON.parse(resp)["distance"]
   end
 
-  def self.sort_by_closest_to_user(user)
-    self.future_events.sort do |a, b|
-      a.distance_from_user(user) <=> b.distance_from_user(user)
-    end
-  end
-
-
     def self.sorted_upcoming_events
       Event.future_events.sort do |a, b|
         Date.strptime(a.date, '%m/%d/%Y') <=> Date.strptime(b.date, '%m/%d/%Y')

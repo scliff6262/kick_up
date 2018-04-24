@@ -33,6 +33,10 @@ module EventsHelper
     end
   end
 
+  def show_distance_from_user
+    "#{(@event.distance_from_user(current_user) * 10).ceil/10.0} miles"
+  end
+
   def find_rsvp_id(event)
     Rsvp.where(event_id: event.id).where(user_id: current_user.id).ids
   end

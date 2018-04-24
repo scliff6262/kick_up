@@ -12,8 +12,11 @@
 <h4>Type:</h4>
 <p><%=@event.event_type%></p>
 
-<h4>Location(will change using ZipCode Gem):</h4>
+<h4>Location:</h4>
 <p><%=location_from_zip(@event.zip_code) %></p>
+
+<h4>Distance from you</h4>
+<p><%=show_distance_from_user%></p>
 
 <h4>Address:</h4>
 <p><%=@event.address%></p>
