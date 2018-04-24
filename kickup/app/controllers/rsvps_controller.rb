@@ -1,7 +1,9 @@
 class RsvpsController < ApplicationController
 
   def new
-    @event = params[:event_id]
+    @event = Event.find_by(params[:event_id])
+    flash[:message] = "You already are attending this kickup!"
+    redirect_to event_path(@event) if @event.users.all.include?(current_user)
   end
 
   def create
