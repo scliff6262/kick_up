@@ -32,4 +32,18 @@ class Event < ActiveRecord::Base
 
       JSON.parse(resp)["distance"]
   end
+
+
+    def self.sort_events_by_date
+      Event.all.sort do |a, b|
+        Date.strptime(a.date, '%m/%d/%Y') <=> Date.strptime(b.date, '%m/%d/%Y')
+      end
+    end
+
+  def self.future_events
+    Event.all.find_all do |event|
+      event_date_plus_one_day = Date.strptime(event.date, '%m/%d/%Y') + 1.days
+      event_date_plus_one_day.future?
+    end
+  end
 end

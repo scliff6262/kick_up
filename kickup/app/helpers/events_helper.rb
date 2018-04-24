@@ -19,12 +19,6 @@ module EventsHelper
     end
   end
 
-  def sort_events_by_date
-    Event.all.sort do |a, b|
-      Date.strptime(a.date, '%m/%d/%Y') <=> Date.strptime(b.date, '%m/%d/%Y')
-    end
-  end
-
   def attend_link
     unless @event.users.include?(current_user)
       link_to "Attend this Kickup", new_event_rsvp_path(@event)
