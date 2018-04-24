@@ -1,8 +1,6 @@
 <h1>Hello <%=@user.first_name%></h1>
 
-<%=link_to "Create New Event", new_event_path%>
 <%=link_to "Edit Info", edit_user_path(@user)%>
-<%=link_to "Logout", logout_path, method: :post%>
 
 <h4>You're attending:</h4>
 <%@user.events.each do |event|%>

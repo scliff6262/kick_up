@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<span><%=link_to "Home", user_path(current_user)%></span>
+<span><%=link_to "Upcoming Events", events_path%></span>
+<span><%=link_to "Create Event", new_event_path%></span>
+<span><%=link_to "Logout", logout_path, method: :post%></span>
 <%= yield %>
 
 </body>
