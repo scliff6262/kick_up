@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to event_path(@comment.event)
     else
-      render "comments/new"
+      flash[:message] = "A comment must include some text!"
+      redirect_to event_path(params[:event_id])
     end
   end
 end

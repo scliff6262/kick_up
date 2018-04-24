@@ -50,5 +50,6 @@
   <%end%>
 
 <h4>Leave a Comment</h4>
+<%=flash[:message]%>
 
 <%=render "./comments/form", event: @event%>
