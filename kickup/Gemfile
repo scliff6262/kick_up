@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'zip-codes'
 gem "combined_time_select", "~> 1.0.1"
 gem 'pry'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
