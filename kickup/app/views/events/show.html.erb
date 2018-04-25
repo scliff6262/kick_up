@@ -1,5 +1,6 @@
 <h1><%=@event.title%></h1>
-<p><%=flash[:message]%></p>
+<p><%=flash[:message1]%></p>
+<p><%=flash[:message3]%></p>
 <p><%=attend_link%></p>
 <p><%=organizer_edit%></p>
 
@@ -50,6 +51,6 @@
   <%end%>
 
 <h4>Leave a Comment</h4>
-<%=flash[:message]%>
+<%=flash[:message2]%>
 
 <%=render "./comments/form", event: @event%>

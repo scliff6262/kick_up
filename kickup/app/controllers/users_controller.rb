@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       login_user
       redirect_to user_path(@user)
     else
-      render file: "/users/new"
+      render "/users/new", layout: false
     end
   end
 

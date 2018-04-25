@@ -1,9 +1,14 @@
 class RsvpsController < ApplicationController
 
   def new
-    @event = Event.find_by(params[:event_id])
-    flash[:message] = "You already are attending this kickup!"
-    redirect_to event_path(@event) if @event.users.all.include?(current_user)
+    @event = Event.find_by(id: params[:event_id])
+    if @event.users.include?(current_user)
+      flash[:message1] = "You already are attending this kickup!"
+      redirect_to event_path(@event)
+    else
+      render :new
+    end 
+
   end
 
   def create
@@ -29,6 +34,13 @@ class RsvpsController < ApplicationController
 
   def delete
     @rsvp = Rsvp.find(params[:id])
+    if @rsvp.user != current_user
+      flash[:message3] = "That is not your reservation!"
+      redirect_to event_path(@rsvp.event)
+    else
+      render :delete
+    end
+
   end
 
   def destroy

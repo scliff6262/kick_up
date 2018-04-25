@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :comments, only: [:create, :destroy]
     resources :rsvps, except: [:show]
-    get 'rsvp/:id/delete' => 'rsvps#delete', as: 'rsvp_delete'
+    get '/rsvps/:id/delete' => 'rsvps#delete', as: 'rsvp_delete'
   end
 
   get '/login' => 'sessions#new'
