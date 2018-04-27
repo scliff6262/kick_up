@@ -33,6 +33,12 @@ module EventsHelper
     end
   end
 
+  def organizer_view_attendees
+    if @event.organizer_id == current_user.id
+      link_to "View Attendees", event_rsvps_path(@event)
+    end
+  end
+
   def show_distance_from_user
     "#{(@event.distance_from_user(current_user) * 10).ceil/10.0} miles"
   end

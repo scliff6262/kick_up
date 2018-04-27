@@ -1,5 +1,10 @@
 class RsvpsController < ApplicationController
 
+  def index
+    @event = Event.find(params[:event_id])
+    @rsvps = @event.rsvps
+  end
+
   def new
     @event = Event.find_by(id: params[:event_id])
     if @event.users.include?(current_user)
@@ -7,7 +12,7 @@ class RsvpsController < ApplicationController
       redirect_to event_path(@event)
     else
       render :new
-    end 
+    end
 
   end
 
@@ -22,8 +27,13 @@ class RsvpsController < ApplicationController
   end
 
   def show
-    @rsvp = Rsvp.find(params[:id])
-    @user = current_user
+    if params[:user_id]
+      @rsvp = Rsvp.find(params[:id])
+      @user = current_user
+    else
+      @rsvp = Rsvp.find(params[:id])
+      @event = @rsvp.event
+    end
   end
 
   def edit

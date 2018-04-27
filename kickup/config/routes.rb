@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :comments, only: [:create, :destroy]
-    resources :rsvps, except: [:show]
+    resources :rsvps
     get '/rsvps/:id/delete' => 'rsvps#delete', as: 'rsvp_delete'
   end
 

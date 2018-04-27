@@ -1,0 +1,7 @@
+<h1><%=@event.title%></h1>
+<h3>Attendees:</h3>
+<%@rsvps.each do |rsvp|%>
+<p><%=link_to rsvp.user.first_name, event_rsvp_path(@event, rsvp)%></p>
+<%end%>
+
+<p><%=link_to "Return to Event", event_path(@event)%></p>
