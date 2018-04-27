@@ -3,6 +3,10 @@ class RsvpsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @rsvps = @event.rsvps
+    if @event.organizer != current_user
+      flash[:message1] = "Only the organizer can view attendees."
+      redirect_to event_path(@event)
+    end 
   end
 
   def new
@@ -27,11 +31,10 @@ class RsvpsController < ApplicationController
   end
 
   def show
+    @rsvp = Rsvp.find(params[:id])
     if params[:user_id]
-      @rsvp = Rsvp.find(params[:id])
       @user = current_user
     else
-      @rsvp = Rsvp.find(params[:id])
       @event = @rsvp.event
     end
   end
