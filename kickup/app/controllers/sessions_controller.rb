@@ -8,12 +8,12 @@ skip_before_action :require_login, only: [:new, :create]
   def create #creating a session
     if !!params[:provider]
       info = request.env["omniauth.auth"]["info"]
-      user = User.find_by(email: info["email"])
+          user = User.find_by(email: info["email"])
       if !!user
         session[:user_id] = user.id
         redirect_to user_path(user)
       else
-        @user = User.new(email: info["email"])
+        @user = User.new(first_name: info["name"].split(" ")[0], last_name: info["name"].split(" ")[1], email: info["email"])
         render "users/new", layout: false
       end
     else
