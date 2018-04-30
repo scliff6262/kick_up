@@ -1,5 +1,6 @@
 <h1>Edit Event</h1>
 
+<%=render 'events/errors' if @event.errors.any? %>
 <%=render 'events/form'%>
 <br>
 <%=form_tag "/events/#{@event.id}", method: :delete%>

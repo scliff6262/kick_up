@@ -7,11 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<span><%=link_to "Home", user_path(current_user)%></span>
-<span><%=link_to "Upcoming Events", events_path%></span>
-<span><%=link_to "Create Event", new_event_path%></span>
-<span><%=link_to "Logout", logout_path, method: :post%></span>
-<%= yield %>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li><%=link_to "Home", user_path(current_user)%></li>
+    <li><%=link_to "Upcoming Events", events_path%></li>
+    <li><%=link_to "Create Event", new_event_path%></li>
+    <li><%=link_to "Logout", logout_path, method: :post%></li>
+  </ul>
 
+  <%= yield %>
+</div>
 </body>
 </html>

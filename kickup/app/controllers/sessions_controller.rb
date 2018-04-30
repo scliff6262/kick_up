@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
 skip_before_action :require_login, only: [:new, :create]
   def new #login page
     redirect_to user_path(current_user) if current_user
-    render layout: false
   end
 
   def create #creating a session
@@ -14,7 +13,7 @@ skip_before_action :require_login, only: [:new, :create]
         redirect_to user_path(user)
       else
         @user = User.new(first_name: info["name"].split(" ")[0], last_name: info["name"].split(" ")[1], email: info["email"])
-        render "users/new", layout: false
+        render "users/new"
       end
     else
       user = User.find_by(email: session_params[:email])
@@ -23,7 +22,7 @@ skip_before_action :require_login, only: [:new, :create]
         session[:user_id] = user.id
         redirect_to user_path(user)
       else
-        render 'sessions/new', layout: false
+        render 'sessions/new'
       end
     end
   end
