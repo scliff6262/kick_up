@@ -25,7 +25,10 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    redirect_to event_path(@event) unless @event.organizer == current_user
+    unless @event.organizer == current_user
+      flash[:message1] = "Only the organizer can edit this event."
+      redirect_to event_path(@event)
+    end
   end
 
   def update
@@ -45,7 +48,6 @@ class EventsController < ApplicationController
       @event.destroy
       redirect_to user_path(current_user)
     else
-      #error message "this isnt your event!!"
       redirect_to event_path(@event)
     end
   end

@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
       headers: {api_key: "E76SZFyWQKK0FOcfvWvrsw4SFaC8x4BxvFCh8diaUe9YpktbJeo8nevbBlVpyBYu"}
       )
 
-      JSON.parse(resp)["distance"]
+      "#{(JSON.parse(resp)["distance"] * 10).ceil/10.0} miles"
   end
 
     def self.sorted_upcoming_events

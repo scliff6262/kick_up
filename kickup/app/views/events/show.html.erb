@@ -1,9 +1,9 @@
 <h1><%=@event.title%></h1>
 <p><%=flash[:message1]%></p>
 <p><%=flash[:message3]%></p>
-<p><%=attend_link%></p>
-<p><%=organizer_edit%></p>
-<p><%=organizer_view_attendees%></p>
+<span><%=attend_link%></span>
+<span><%=organizer_edit%></span>
+<span><%=organizer_view_attendees%></span>
 
 
 <div class="event-details">
@@ -19,8 +19,8 @@
   <h4>Location:</h4>
   <p><%=location_from_zip(@event.zip_code) %></p>
 
-  <h4>Distance from you: (edited out due to API restriction)</h4>
-  <p></p>
+  <h4>Distance from you: </h4>
+  <p><%=@event.distance_from_user(current_user)%></p>
 
   <h4>Address:</h4>
   <p><%=@event.address%></p>
@@ -35,10 +35,12 @@
   <p><%=link_to @event.organizer.first_name, user_path(@event.organizer)%></p>
 </div>
 
-<h4>Comment(s)</h4>
-  <%@event.comments.each do |c|%>
-    <div><%=c.content%> - <%=link_to c.user.first_name, user_path(c.user)%></div><br>
-  <%end%>
+<%if @event.comments.size > 0%>
+  <h4>Comment(s)</h4>
+    <%@event.comments.each do |c|%>
+      <div><%=c.content%> - <%=link_to c.user.first_name, user_path(c.user)%></div><br>
+    <%end%>
+<%end%>
 
 <h4>Leave a Comment</h4>
 <%=flash[:message2]%>
