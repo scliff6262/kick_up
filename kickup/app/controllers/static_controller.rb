@@ -5,7 +5,7 @@ class StaticController < ApplicationController
     if !!current_user
       redirect_to user_path(current_user)
     else
-      render "static/welcome", layout: false if !current_user
+      render "static/welcome", layout: "sessions"
     end
   end
 end

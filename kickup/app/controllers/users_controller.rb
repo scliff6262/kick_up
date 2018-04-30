@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     redirect_to user_path(current_user) if !!current_user
-    render layout: false
+    render layout: "sessions"
   end
 
   def create
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       login_user
       redirect_to user_path(@user)
     else
-      render "/users/new", layout: false
+      render "/users/new", layout: "sessions"
     end
   end
 
