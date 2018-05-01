@@ -1,5 +1,4 @@
 <h1>See you soon!</h1>
 <p>You are signed up to attend "<%=@rsvp.event.title%>"</p>
 
-<%=link_to "Return Home", user_path(@user)%><br>
-<%=link_to "Event Page", event_path(@rsvp.event)%>
+<%=link_to "Event Page", event_path(@rsvp.event), class: 'btn btn-primary'%>

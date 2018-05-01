@@ -35,10 +35,10 @@
   <p><%=link_to @event.organizer.first_name, user_path(@event.organizer)%></p>
 </div>
 
-<%if @event.comments.size > 0%>
+<%if @event.comments.any?%>
   <h4>Comment(s)</h4>
-    <%@event.comments.each do |c|%>
-      <div><%=c.content%> - <%=link_to c.user.first_name, user_path(c.user)%></div><br>
+    <%@event.comments.each do |comment|%>
+      <%=render partial: "comments/div_comment", locals: {comment: comment}%>
     <%end%>
 <%end%>
 
