@@ -6,7 +6,7 @@ class RsvpsController < ApplicationController
     if @event.organizer != current_user
       flash[:message1] = "Only the organizer can view attendees."
       redirect_to event_path(@event)
-    end 
+    end
   end
 
   def new
@@ -37,12 +37,6 @@ class RsvpsController < ApplicationController
     else
       @event = @rsvp.event
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def delete

@@ -47,8 +47,4 @@ module EventsHelper
     Rsvp.where(event_id: event.id).where(user_id: current_user.id).ids
   end
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
-
 end
