@@ -1,4 +1,4 @@
-# BevTracker
+# kickUp
 
 Welcome to kickUp. This Ruby-on-Rails application will be used by people looking to organize and participate in pickup soccer games in their area.
 Users will create a profile and will be exposed to a list of upcoming "kickup" games.
