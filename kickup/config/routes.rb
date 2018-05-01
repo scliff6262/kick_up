@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'static#welcome'
 
-  resources :users
+  resources :users, except: [:index, :destroy]
 
   resources :events do
     resources :comments, only: [:create, :destroy]
