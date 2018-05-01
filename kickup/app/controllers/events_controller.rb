@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :find_event, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -20,11 +21,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def edit
-    @event = Event.find(params[:id])
     unless @event.organizer == current_user
       flash[:message1] = "Only the organizer can edit this event."
       redirect_to event_path(@event)
@@ -32,7 +31,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
     @event.assign_attributes(event_params)
     @event.event_time = "#{params[:event]["event_time(4i)"]}:#{params[:event]["event_time(5i)"]}"
     if @event.save
@@ -43,7 +41,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     if current_user.organized_events.include?(@event)
       @event.destroy
       redirect_to user_path(current_user)
@@ -53,6 +50,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def find_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:title, :zip_code, :skill_level, :date, :address, :event_type)

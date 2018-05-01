@@ -1,7 +1,9 @@
 class RsvpsController < ApplicationController
+  before_action :find_rsvp, only: [:show, :delete, :destroy]
+  before_action :find_event, only: [:index, :new]
+
 
   def index
-    @event = Event.find(params[:event_id])
     @rsvps = @event.rsvps
     if @event.organizer != current_user
       flash[:message1] = "Only the organizer can view attendees."
@@ -10,7 +12,6 @@ class RsvpsController < ApplicationController
   end
 
   def new
-    @event = Event.find_by(id: params[:event_id])
     if @event.users.include?(current_user)
       flash[:message1] = "You already are attending this kickup!"
       redirect_to event_path(@event)
@@ -21,37 +22,21 @@ class RsvpsController < ApplicationController
   end
 
   def create
-    @rsvp = Rsvp.new(comment: rsvp_params[:comment], event_id: rsvp_params[:event_id])
-    @rsvp.user_id = current_user.id
-    if @rsvp.save
-      redirect_to user_rsvp_path(current_user, @rsvp)
-    else
-      render 'rsvp/new'
-    end
+    @rsvp = Rsvp.new(comment: rsvp_params[:comment], event_id: rsvp_params[:event_id], user_id: current_user.id)
+    redirect_to event_rsvp_path(@rsvp.event, @rsvp) if @rsvp.save
   end
 
   def show
-    @rsvp = Rsvp.find(params[:id])
-    if params[:user_id]
-      @user = current_user
-    else
-      @event = @rsvp.event
-    end
   end
 
   def delete
-    @rsvp = Rsvp.find(params[:id])
     if @rsvp.user != current_user
       flash[:message3] = "That is not your reservation!"
       redirect_to event_path(@rsvp.event)
-    else
-      render :delete
     end
-
   end
 
   def destroy
-    @rsvp = Rsvp.find(params[:id])
     @rsvp.destroy
     redirect_to event_path(params[:event_id])
   end
@@ -60,5 +45,13 @@ class RsvpsController < ApplicationController
 
   def rsvp_params
     params.permit(:comment, :event_id)
+  end
+
+  def find_rsvp
+    @rsvp = Rsvp.find(params[:id])
+  end
+
+  def find_event
+    @event = Event.find(params[:event_id])
   end
 end
