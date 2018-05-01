@@ -33,8 +33,8 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    # MUST FIX TIME - EDIT ISSUE
     @event.assign_attributes(event_params)
+    @event.event_time = "#{params[:event]["event_time(4i)"]}:#{params[:event]["event_time(5i)"]}"
     if @event.save
       redirect_to event_path(@event)
     else

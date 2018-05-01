@@ -4,4 +4,4 @@
 <%=render 'events/form'%>
 <br>
 <%=form_tag "/events/#{@event.id}", method: :delete%>
-<%=submit_tag "Delete Event"%>
+<%=submit_tag "Delete Event", class: 'btn btn-danger'%>

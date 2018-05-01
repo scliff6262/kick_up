@@ -1,4 +1,4 @@
 <h1>Are you sure you want to un-attend this Kickup?</h1>
 <%=form_tag(event_rsvp_path(@rsvp.event, @rsvp), method: :delete)%>
-<%=submit_tag "Delete Reservation"%><br>
-<%=link_to "Go Back", event_path(@rsvp.event)%>
+<%=submit_tag "Delete Reservation", class: 'btn btn-danger'%><br>
+<%=link_to "Go Back", event_path(@rsvp.event), class: 'btn btn-primary'%>

@@ -5,8 +5,8 @@
 
 <%=f.label "Date & Time"%><br>
 <%=f.text_field :date, value: "#{@event.date ? @event.date : "mm/dd/yyyy"}"%>
-
-<%=f.time_select :event_time, {minute_step: 15} unless @event.event_time %><br></br>
+<%@event.event_time = nil if @event.event_time%>
+<%=f.time_select :event_time, {minute_step: 15, include_blank: true}%><br></br>
 <%=f.label :address%><br>
 <%=f.text_field :address%><br></br>
 
@@ -33,5 +33,5 @@
 
 <br></br>
 
-<%=f.submit%>
+<%=f.submit class: 'btn btn-primary'%>
 <%end%>

@@ -3,5 +3,5 @@
 <h3>Leave a note for the organizer:</h3>
 <%=form_tag event_rsvps_path(@event)%>
 <%=text_area_tag 'comment'%><br></br>
-<%=submit_tag 'Attend'%><br>
-<%=link_to 'Go Back', event_path(@event)%>
+<%=submit_tag 'Attend', class: "btn btn-primary"%><br>
+<%=link_to 'Go Back', event_path(@event), class: "btn btn-outline-primary"%>
