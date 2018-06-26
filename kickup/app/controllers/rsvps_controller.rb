@@ -4,10 +4,10 @@ class RsvpsController < ApplicationController
 
 
   def index
-    @rsvps = @event.rsvps
-    if @event.organizer != current_user
-      flash[:message1] = "Only the organizer can view attendees."
-      redirect_to event_path(@event)
+    rsvps = @event.rsvps
+    respond_to do |f|
+      f.json {render json: rsvps}
+      f.html {render :index}
     end
   end
 
