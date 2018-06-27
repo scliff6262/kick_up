@@ -4,9 +4,9 @@ class RsvpsController < ApplicationController
 
 
   def index
-    rsvps = @event.rsvps
+    @rsvps = @event.rsvps
     respond_to do |f|
-      f.json {render json: rsvps}
+      f.json {render json: @rsvps}
       f.html {render :index}
     end
   end

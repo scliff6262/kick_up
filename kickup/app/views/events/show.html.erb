@@ -1,10 +1,11 @@
 <h1><%=@event.title%></h1>
 <p><%=flash[:message1]%></p>
 <p><%=flash[:message3]%></p>
-<span><%=link_to "View Attendees", event_rsvps_path(@event), class: "attendeesButton", "data-id": @event.id%></span>
+<div class="spans">
+<span><a href="#"  id="attendeesButton" data-id="<%=@event.id%>">View attendees</a></span>
 <span><%=attend_link%></span>
 <span><%=organizer_edit%></span>
-
+</div>
 
 <div class="row">
   <div class="event-details column">
