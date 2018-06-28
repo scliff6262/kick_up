@@ -40,14 +40,19 @@
 
   </div>
 </div>
-<%if @event.comments.any?%>
-  <h4>Comment(s)</h4>
-    <%@event.comments.each do |comment|%>
-      <%=render partial: "comments/div_comment", locals: {comment: comment}%>
-    <%end%>
-<%end%>
+<div id="comments">
+  <p><a href="#" id="viewComments" data-id="<%=@event.id%>">View Comments</a></p>
+
+</div>
+
 
 <h4>Leave a Comment</h4>
 <%=flash[:message2]%>
 
 <%=render "./comments/form", event: @event%>
+
+<script id="comment-template" type="text/x-handlebars-template">
+  <h5><a href="/users/{{userId}}">{{userFirstName}}</a> says:</h5>
+  <p>{{content}}</p>
+  
+</script>
