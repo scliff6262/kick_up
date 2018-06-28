@@ -2,12 +2,24 @@
 
 <%=link_to "Edit Info", edit_user_path(@user)%>
 
-<h4>You're attending:</h4>
-<%@user.events.each do |event|%>
-<p><%=link_to event.title, event_path(event)%></p>
-<%end%>
+<div class="allEvents">
+  <h4>You're attending:</h4>
+  <%@user.events.each do |event|%>
+  <p><%=link_to event.title, event_path(event), class: "my-events", "data-id": event.id%></p>
+  <%end%>
 
-<h4>Organized Events Below</h4>
-<%@user.organized_events.each do |event|%>
-<p><%=link_to event.title, event_path(event)%></p>
+  <h4>Organized Events Below</h4>
+  <%@user.organized_events.each do |event|%>
+  <p><%=link_to event.title, event_path(event), class: "organized-events"%></p>
+
+</div>
+
+<div id="selectedEvent">
+
+</div>
+<script id="event-template" type="text/x-handlebars-template">
+  <h4>{{title}}</h4>
+  <p>{{eventTime}}</p>
+  <p>{{date}}<p>
+</script>
 <%end%>

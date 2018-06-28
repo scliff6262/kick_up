@@ -21,6 +21,10 @@ class EventsController < ApplicationController
   end
 
   def show
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @event}
+    end
   end
 
   def edit
