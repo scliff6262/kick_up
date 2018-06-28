@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :destroy]
 
   resources :events do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
     resources :rsvps
     get '/rsvps/:id/delete' => 'rsvps#delete', as: 'rsvp_delete'
   end
