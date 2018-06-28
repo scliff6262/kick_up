@@ -23,6 +23,8 @@ $(document).ready(function(){
         thisComment = new Comment(comment)
         thisComment.addToPage()
       })
+      $("#form").css("display", "block")
     })
+
   })
 })
