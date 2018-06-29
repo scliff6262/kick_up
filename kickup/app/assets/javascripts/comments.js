@@ -6,7 +6,6 @@ $(document).ready(function(){
     this.content = json.content
     this.userId = json["user_id"]
     this.id = json.id
-    console.log(this)
     this.addToPage = function(){
       const template = $("#comment-template").html()
       const compiled = Handlebars.compile(template)
