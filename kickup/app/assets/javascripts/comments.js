@@ -6,7 +6,7 @@ $(document).ready(function(){
     this.content = json.content
     this.userId = json["user_id"]
     this.id = json.id
-
+    console.log(this)
     this.addToPage = function(){
       const template = $("#comment-template").html()
       const compiled = Handlebars.compile(template)
@@ -25,6 +25,22 @@ $(document).ready(function(){
       })
       $("#form").css("display", "block")
     })
+  })
 
+  $(".new_comment").submit(function(e){
+    e.preventDefault()
+    const eventId = $(this).data("id")
+    const commentData = $(this).serialize()
+    $.ajax({
+      type: "POST",
+      url: `/events/${eventId}/comments`,
+      data: commentData,
+      dataType: "json",
+      success: function(r){
+        const thisComment = new Comment(r)
+        $("#comment_content").val("")
+        thisComment.addToPage()
+      }
+    })
   })
 })

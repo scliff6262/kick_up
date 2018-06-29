@@ -50,6 +50,7 @@
   <%=flash[:message2]%>
   <%=render "./comments/form", event: @event%>
 </div>
+<br></br>
 
 <script id="comment-template" type="text/x-handlebars-template">
   <h5><a href="/users/{{userId}}">{{userFirstName}}</a> says:</h5>
