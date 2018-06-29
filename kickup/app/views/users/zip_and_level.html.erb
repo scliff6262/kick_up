@@ -1,0 +1,19 @@
+<h1>Sign Up</h1>
+<h5>Please enter your Zip Code and Skill Level</h5>
+<%=form_for @user do |f|%>
+
+<%=f.label :zip_code%><br>
+<%=f.text_field :zip_code, value: ""%><br></br>
+
+<%=f.label "Playing Level"%><br>
+<%=f.radio_button :level, 1, checked: "checked" %>
+<%=f.label("Beginner") %><br>
+<%=f.radio_button :level, 2 %>
+<%=f.label("Decent Player")%><br>
+<%=f.radio_button :level, 3 %>
+<%=f.label("Veteran") %><br>
+<%=f.radio_button :level, 4 %>
+<%=f.label("Highly Competitive")%><br></br>
+
+<%=f.submit class: 'btn btn-primary'%>
+<%end%>

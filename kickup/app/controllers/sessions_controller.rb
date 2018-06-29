@@ -7,13 +7,23 @@ skip_before_action :require_login, only: [:new, :create]
   def create #creating a session
     if !!params[:provider]
       info = request.env["omniauth.auth"]["info"]
-          user = User.find_by(email: info["email"])
+      user = User.find_by(email: info["email"])
       if !!user
         session[:user_id] = user.id
         redirect_to user_path(user)
       else
-        @user = User.new(first_name: info["name"].split(" ")[0], last_name: info["name"].split(" ")[1], email: info["email"])
-        render "users/new"
+        random_password = SecureRandom.hex(10)
+        @user = User.create(
+          first_name: info["name"].split(" ")[0],
+          last_name: info["name"].split(" ")[1],
+          email: info["email"],
+          password: random_password,
+          password_confirmation: random_password,
+          zip_code:"00000",
+          level: 1
+        )
+        session[:user_id] = @user.id
+        render "users/zip_and_level"
       end
     else
       user = User.find_by(email: session_params[:email])
