@@ -40,6 +40,9 @@ $(document).ready(function(){
         const thisComment = new Comment(r)
         $("#comment_content").val("")
         thisComment.addToPage()
+      },
+      error: function(){
+        alert("Comment cannot be blank!")
       }
     })
   })
