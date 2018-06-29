@@ -21,9 +21,9 @@ module EventsHelper
 
   def attend_link
     unless @event.users.include?(current_user)
-      link_to "Attend this Kickup", new_event_rsvp_path(@event)
+      link_to "Attend this Kickup", new_event_rsvp_path(@event), id: "attend-link", "data-event-id": @event.id
     else
-      link_to "Cancel RSVP", event_rsvp_delete_path(@event, find_rsvp_id(@event))
+      link_to "Cancel RSVP", event_rsvp_delete_path(@event, find_rsvp_id(@event)), id: "attend-link", "data-event-id": @event.id, "data-rsvp-id": find_rsvp_id(@event)
     end
   end
 

@@ -23,7 +23,14 @@ class RsvpsController < ApplicationController
 
   def create
     @rsvp = Rsvp.new(comment: rsvp_params[:comment], event_id: rsvp_params[:event_id], user_id: current_user.id)
-    redirect_to event_rsvp_path(@rsvp.event, @rsvp) if @rsvp.save
+
+    if @rsvp.save
+      respond_to do |f|
+        f.json {render json: @rsvp}
+        f.html {redirect_to event_rsvp_path(@rsvp.event, @rsvp)}
+      end
+    end
+
   end
 
   def show
