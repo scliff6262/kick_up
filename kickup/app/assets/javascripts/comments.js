@@ -13,6 +13,7 @@ $(document).ready(function(){
       $("#comments").append(html)
     }
   }
+
   $("#viewComments").on("click", function(e){
     e.preventDefault()
     $("#comments").html("<h4>Comments:</h4>")
@@ -24,6 +25,7 @@ $(document).ready(function(){
       })
       $("#form").css("display", "block")
     })
+  })
 
   $(".new_comment").submit(function(e){
     e.preventDefault()
