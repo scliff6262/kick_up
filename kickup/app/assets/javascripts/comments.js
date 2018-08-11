@@ -24,7 +24,6 @@ $(document).ready(function(){
       })
       $("#form").css("display", "block")
     })
-  })
 
   $(".new_comment").submit(function(e){
     e.preventDefault()
