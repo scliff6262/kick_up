@@ -12,6 +12,14 @@ First be sure to have Ruby installed. Download this repository, change directory
 
 Start the server using the "bundle exec thin start --ssl" command to open the application with a 'https' certificate. In order for Omniauth to function properly, be sure the "Site URL" and the "Valid OAuth Redirect URIs" in the Facebook-Developers page match the current server.
 
+## Video Walkthrough
+
+https://www.youtube.com/watch?v=PSCDj4_ObVk&t=2s
+
+## Demo
+
+https://kickupsoccer.herokuapp.com/
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/scliff6262/kick_up. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
